@@ -1,7 +1,7 @@
 import cv2
 import os
 import random
-
+# 주의 -> 고해상도 이미지를 저해상도 이미지로 변환하는 과정에서 마지막 고해상도 이미지가 변환되지 않는 버그 발생
 def transform_image(folder_path, target_size, output_folder=None):
     """
     다양한 보간법을 사용하여 이미지 크기를 변환하고 결과를 표시합니다.
@@ -62,12 +62,13 @@ def transform_image(folder_path, target_size, output_folder=None):
         print(f"오류가 발생했습니다: {e}")
 
 
-# --- 사용 예시 ---
-# 여기에 자신의 이미지 경로와 저장 경로를 지정하세요.
+# folder_path-> 고해상도 이미지가 들어있는 폴더경로.
+# output_folder -> 다운스케일링된 이미지가 들어갈 폴더 경로
 folder_path = '.\\Dataset4K'
 output_folder = '.\\DownscaleImages'
 
 # 목표 크기 지정 (예: 원본 크기의 0.25배로 축소)
-target_size_downscale = (960,540)  # (너비, 높이)
+target_size_downscale1 = (960,540)  # (너비, 높이)
+target_size_downscale2 = (240,135)  # (너비, 높이)
 
-transform_image(folder_path, target_size_downscale, output_folder)
+transform_image(folder_path, target_size_downscale1, output_folder)
